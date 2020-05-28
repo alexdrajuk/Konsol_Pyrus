@@ -7,3 +7,5 @@ env/
 todo.txt
 notes.txt
 .flake8
+*.log
+*.db
