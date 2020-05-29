@@ -7,21 +7,30 @@ from requests.exceptions import HTTPError
 logger = logging.getLogger('app_logger')
 
 
+def http_error_decorator(f):
+    def wrapper(*args, **kwargs):
+        try:
+            return f(*args, **kwargs)
+        except HTTPError as e:
+            logger.debug(str(e))
+    return wrapper
+
+
 class PyrusAccount:
+
+    @http_error_decorator
     def __init__(self, login, secret_key):
         url = 'https://api.pyrus.com/v4/auth'
         params = {
             'login': login,
             'security_key': secret_key,
         }
-        try:
-            response = requests.get(url, params=params)
-            response_data = response.json()
-            response.raise_for_status()
-            self.token = response_data.get('access_token')
-        except HTTPError as e:
-            logger.debug(str(e))
+        response = requests.get(url, params=params)
+        response_data = response.json()
+        response.raise_for_status()
+        self.token = response_data.get('access_token')
 
+    @http_error_decorator
     def get_task(self, task_id):
         url = f"https://api.pyrus.com/v4/tasks/{task_id}"
         headers = {
@@ -33,6 +42,7 @@ class PyrusAccount:
         task = response_data.get('task')
         return task
 
+    @http_error_decorator
     def get_lists(self):
         url = "https://api.pyrus.com/v4/lists"
         headers = {
@@ -44,6 +54,7 @@ class PyrusAccount:
         lists = response_data.get('lists')
         return lists
 
+    @http_error_decorator
     def get_planed_tasks(self):
         '''Возвращает все задачи из списка "Plan"'''
         plan_list_id = None
@@ -61,6 +72,7 @@ class PyrusAccount:
         tasks = [self.get_task(task.get('id')) for task in response_data.get('tasks', [])]
         return tasks
 
+    @http_error_decorator
     def get_inbox(self):
         url = "https://api.pyrus.com/v4/inbox"
         headers = {
@@ -72,6 +84,7 @@ class PyrusAccount:
         inbox_tasks = response_data.get('tasks')
         return inbox_tasks
 
+    @http_error_decorator
     def get_contacts(self):
         '''возвращает список доступных пользователю контактов'''
         url = "https://api.pyrus.com/v4/contacts"
@@ -85,6 +98,7 @@ class PyrusAccount:
         persons = organizations[0].get('persons')
         return persons
 
+    @http_error_decorator
     def update_task(self, task_id, **kwargs):
         url = f"https://api.pyrus.com/v4/tasks/{task_id}/comments"
         headers = {
@@ -101,6 +115,7 @@ class PyrusAccount:
         related_tasks = [self.get_task(task_id) for task_id in related_task_ids]
         return related_tasks
 
+    @http_error_decorator
     def locate_plan_list(self):
         '''Возвращает ID списка "Plan"'''
         url = "https://api.pyrus.com/v4/lists"
