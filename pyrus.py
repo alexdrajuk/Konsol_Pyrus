@@ -2,18 +2,10 @@ import os
 import logging
 
 import requests
-from requests.exceptions import HTTPError
+
+from decorators import http_error_decorator
 
 logger = logging.getLogger('app_logger')
-
-
-def http_error_decorator(f):
-    def wrapper(*args, **kwargs):
-        try:
-            return f(*args, **kwargs)
-        except HTTPError as e:
-            logger.debug(str(e))
-    return wrapper
 
 
 class PyrusAccount:
