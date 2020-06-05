@@ -57,7 +57,10 @@ class PyrusAccount:
         headers = {
             'Authorization': f'Bearer {self.token}',
         }
-        response = requests.get(url, headers=headers)
+        params = {
+            'include_archived': 'y',
+        }
+        response = requests.get(url, headers=headers, params=params)
         response.raise_for_status()
         response_data = response.json()
         tasks = [self.get_task(task.get('id')) for task in response_data.get('tasks', [])]
