@@ -1,4 +1,4 @@
-import logging
+import logging.config
 
 from requests import HTTPError
 
