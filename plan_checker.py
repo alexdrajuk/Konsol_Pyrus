@@ -6,15 +6,12 @@ import lib
 from messenger import Messenger
 
 import schedule
-from settings import (
-    TELEGRAM_BOT_TOKEN,
-    logger_config
-)
+import settings
 
-logging.config.dictConfig(logger_config)
+logging.config.dictConfig(settings.logger_config)
 logger = logging.getLogger('app_logger')
 
-Messenger = Messenger(TELEGRAM_BOT_TOKEN)
+Messenger = Messenger(settings.TELEGRAM_BOT_TOKEN)
 
 
 def check_users_plans(empty_plan_list_message, empty_plan_task_message, incorrect_plan_task_message, notify_manager=False):
@@ -204,4 +201,4 @@ schedule.every().friday.at('11:30').do(
 if __name__ == '__main__':
     while True:
         schedule.run_pending()
-        time.sleep(1)
+        time.sleep(60)

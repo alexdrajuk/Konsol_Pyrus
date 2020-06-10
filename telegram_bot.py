@@ -26,4 +26,5 @@ def process_registration(message):
         bot.send_message(message.chat.id, 'Ура! Вы зарегистрированы!\nГотовьтесь получать штрафы')
 
 
-bot.polling()
+if __name__ == '__main__':
+    bot.polling()

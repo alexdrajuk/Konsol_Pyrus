@@ -39,18 +39,11 @@ def extract_task_title(task_title):
         return title[0].strip()
 
 
-def utc_to_localtime(utc_time):
-    local_tz = pytz.timezone('Europe/Kiev')
-    return utc_time.replace(tzinfo=pytz.utc).astimezone(local_tz)
-
-
 def get_deadline_time(task):
     if task.get('due_date'):
-        deadline_time = datetime.strptime(task.get('due_date'), '%Y-%m-%d')
-        return utc_to_localtime(deadline_time)
+        return datetime.strptime(task.get('due_date'), '%Y-%m-%d').replace(tzinfo=pytz.UTC)
     elif task.get('due'):
-        deadline_time = datetime.strptime(task.get('due'), '%Y-%m-%dT%H:%M:%SZ')
-        return utc_to_localtime(deadline_time)
+        return datetime.strptime(task.get('due'), '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=pytz.UTC)
     return None
 
 
@@ -72,6 +65,16 @@ def is_deadline_come(deadline_time, treshold=DEADLINE_TIME_TRESHOLD):
     '''
     tz = pytz.timezone('Europe/Kiev')
     now = datetime.now(tz=tz)
-    deadline_time = datetime.strptime(deadline_time, "%Y-%m-%d %H:%M:%S%z")
+    deadline_time = datetime.strptime(deadline_time, "%Y-%m-%d %H:%M:%S%z").astimezone(tz)
     diff_in_minutes = divmod(abs((now - deadline_time)).total_seconds(), 60)[0]
     return diff_in_minutes < treshold
+
+
+def is_task_closed(task):
+    if task.get('close_date'):
+        return True
+    return False
+
+
+def generate_task_link(task_id):
+    return f'https://pyrus.com/t#{task_id}'
