@@ -1,9 +1,15 @@
+import logging.config
+from time import sleep
+
 import lib
 import telebot
 
-from settings import TELEGRAM_BOT_TOKEN
+import settings
 
-bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN)
+logging.config.dictConfig(settings.logger_config)
+logger = logging.getLogger('app_logger')
+
+bot = telebot.TeleBot(settings.TELEGRAM_BOT_TOKEN)
 
 
 @bot.message_handler(commands=['registration'])
@@ -27,4 +33,9 @@ def process_registration(message):
 
 
 if __name__ == '__main__':
-    bot.polling()
+    while True:
+        try:
+            bot.polling()
+        except Exception as e:
+            logger.error(e, exc_info=True)
+            sleep(15)
