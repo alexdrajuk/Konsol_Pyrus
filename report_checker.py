@@ -51,28 +51,28 @@ def check_users_plans(empty_plan_list_message, empty_plan_task_message, incorrec
             continue
 
 
-schedule.every().monday.at('11:00').do(
+schedule.every().monday.at('19:00').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().monday.at('11:10').do(
+schedule.every().monday.at('19:10').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().monday.at('11:20').do(
+schedule.every().monday.at('19:20').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст. Предупреждение о штрафе',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().monday.at('11:30').do(
+schedule.every().monday.at('19:30').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст. Руководство знает о невыполнении ',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
@@ -81,28 +81,28 @@ schedule.every().monday.at('11:30').do(
 )
 
 
-schedule.every().tuesday.at('11:00').do(
+schedule.every().tuesday.at('19:00').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().tuesday.at('11:10').do(
+schedule.every().tuesday.at('19:10').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().tuesday.at('11:20').do(
+schedule.every().tuesday.at('19:20').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст. Предупреждение о штрафе',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().tuesday.at('11:30').do(
+schedule.every().tuesday.at('19:30').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст. Руководство знает о невыполнении ',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
@@ -110,28 +110,28 @@ schedule.every().tuesday.at('11:30').do(
     notify_manager=True,
 )
 
-schedule.every().wednesday.at('11:00').do(
+schedule.every().wednesday.at('19:00').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().wednesday.at('11:10').do(
+schedule.every().wednesday.at('19:10').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().wednesday.at('11:20').do(
+schedule.every().wednesday.at('19:20').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст. Предупреждение о штрафе',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().wednesday.at('11:30').do(
+schedule.every().wednesday.at('19:30').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст. Руководство знает о невыполнении ',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
@@ -139,28 +139,28 @@ schedule.every().wednesday.at('11:30').do(
     notify_manager=True,
 )
 
-schedule.every().thursday.at('11:00').do(
+schedule.every().thursday.at('19:00').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().thursday.at('11:10').do(
+schedule.every().thursday.at('19:10').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().thursday.at('11:20').do(
+schedule.every().thursday.at('19:20').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст. Предупреждение о штрафе',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().thursday.at('11:30').do(
+schedule.every().thursday.at('19:30').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст. Руководство знает о невыполнении ',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
@@ -168,28 +168,28 @@ schedule.every().thursday.at('11:30').do(
     notify_manager=True,
 )
 
-schedule.every().friday.at('11:00').do(
+schedule.every().friday.at('19:00').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().friday.at('11:10').do(
+schedule.every().friday.at('19:10').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().friday.at('11:20').do(
+schedule.every().friday.at('19:20').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст. Предупреждение о штрафе',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
     incorrect_plan_task_message='План для задачи {task_name} не соответствует подзадачам \nhttps://pyrus.com/t#{task_id}',
 )
 
-schedule.every().friday.at('11:30').do(
+schedule.every().friday.at('19:30').do(
     check_users_plans,
     empty_plan_list_message='Ваш список "План" пуст. Руководство знает о невыполнении',
     empty_plan_task_message='Отсутствует план для задачи {task_name} \nhttps://pyrus.com/t#{task_id}',
