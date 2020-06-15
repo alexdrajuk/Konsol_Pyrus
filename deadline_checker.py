@@ -87,7 +87,7 @@ def remind_about_deadlines():
                     deadline.get('user_chat_id'),
                     f"Время дедлайна для задачи\n{utils.generate_task_link(task_id)}\nОповещение для руководства"
                 )
-                # Если владелец таски и исполнитель не одно и то же лицо, то также уведомляем владельца таски
+                # Если владелец таски и исполнитель НЕ ОДНО И ТО ЖЕ ЛИЦО, то также уведомляем владельца таски
                 if deadline.get('author_id') != deadline.get('responsible_id'):
                     manager_id = lib.fetch_user_by_id(deadline.get('author_id')).get('chat_id')
                     messenger.send_message(
