@@ -31,19 +31,22 @@ def get_today_report_comment(task):
 
 def is_plan_correct(plan, related_tasks):
     '''Проверяет соответствие плана связанным задачам'''
-    plan = plan.split('\n')
+    plan = [subject.lower() for subject in plan.split('\n')]
     # Удаляем слово "План"
     # ['Plan:', 'Пункт плана 1', 'Пункт плана 2'] => ['Пункт плана 1', 'Пункт плана 2']
     plan = plan[1:]
-    related_tasks_subjects = [task.get('subject') for task in related_tasks]
+    related_tasks_subjects = [task.get('subject').lower() for task in related_tasks]
     return set(plan) == set(related_tasks_subjects)
 
 
-def is_report_correct(plan, report):
+def is_report_correct(report, plan):
     '''Проверяет соответствие отчета плану'''
+    plan = [subject.lower() for subject in plan.split('\n')]
     # Удаляем слово "Plan"
     # ['Plan:', 'Пункт плана 1', 'Пункт плана 2'] => ['Пункт плана 1', 'Пункт плана 2']
     plan = plan[1:]
+
+    report = [subject.lower() for subject in report.split('\n')]
     # Удаляем слово "Report"
     # ['Report:', 'Пункт отчета 1', 'Пункт отчета 2'] => ['Пункт отчета 1', 'Пункт отчета 2']
     report = report[1:]
@@ -148,39 +151,3 @@ def update_deadline_checking_time(task_id, deadline_time):
                 WHERE id = ? '''
         cursor = conn.cursor()
         cursor.execute(sql, (next_deadline_time.strftime("%Y-%m-%d %H:%M:%S%z"), task_id))
-
-
-
-
-
-# def fetch_deadlines():
-#     '''Возвращает дедлайны из базы'''
-#     conn = sqlite3.connect(settings.DATABASE_FILE_PATH)
-#     with conn:
-#         conn.row_factory = sqlite3.Row
-#         sql = f'''SELECT * FROM {settings.DEADLINES_TABLE_NAME}'''
-#         cursor = conn.cursor()
-#         return cursor.execute(sql).fetchall()
-
-
-
-# def normalize_tasks(token):
-#     """Приводит заголовок задачи к правильному виду и извлекает из него срок дедлайна
-#     (это придумала какая-то эффективно-менеджерская шляпа)"""
-
-
-#     inbox_tasks_ids = [task.get('id') for task in api.get_inbox(token)]
-#     tasks = [api.get_task(token, task_id) for task_id in inbox_tasks_ids]
-
-#     for task in tasks:
-#         task_title = utils.extract_task_title(task.get('subject', '')).title()
-#         deadline_date = utils.extract_deadline_date(task.get('subject', ''))
-#         deadline_time = utils.extract_deadline_time(task.get('subject', ''))
-
-#         comment_data = {'subject': task_title}
-#         if not deadline_time:
-#             comment_data['due_date'] = deadline_date
-#         else:
-#             comment_data['due'] = f'{deadline_date}{deadline_time}'
-
-#         api.update_task(token, task['id'], **comment_data)

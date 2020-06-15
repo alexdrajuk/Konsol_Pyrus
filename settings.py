@@ -21,25 +21,25 @@ EMPTY_PLAN_LIST_MESSAGE_FOR_OWNER = 'Cписок "План" пуст у разр
 EMPTY_PLAN_LIST_MESSAGE_FOR_DEV = 'Предупреждение о штрафе. Заполните план'
 
 # Сообщение об отсутствии плана в задаче (для владельца задачи)
-EMPTY_PLAN_TASK_MESSAGE_FOR_OWNER = 'Отсутсвует план для задачи {task_subject}\n{task_link}\nУ разработчика {developer_name}'
+EMPTY_PLAN_TASK_MESSAGE_FOR_OWNER = 'Отсутсвует план для задачи:\n{task_subject}\n{task_link}\nУ разработчика {developer_name}'
 
 # Сообщение об отсутствии плана в задаче (для разработчика)
-EMPTY_PLAN_TASK_MESSAGE_FOR_DEV = 'Предупреждение о штрафе. Заполните план для задачи {task_subject}\n{task_link}'
+EMPTY_PLAN_TASK_MESSAGE_FOR_DEV = 'Предупреждение о штрафе. Заполните план для задачи:\n{task_subject}\n{task_link}'
 
 # Сообщение о неправильном плане в задаче (для разработчика)
-INCORRECT_PLAN_TASK_MESSAGE_FOR_DEV = 'План для задачи {task_subject} не соответствует подзадачам\n{task_link}'
+INCORRECT_PLAN_TASK_MESSAGE_FOR_DEV = 'План для задачи:\n{task_subject} не соответствует подзадачам\n{task_link}'
 
 # Сообщение о пустом отчете (для владельца задачи)
 EMPTY_REPORT_MESSAGE_FOR_OWNER = 'Отсутствует отчет по задаче: {task_subject}\n{task_link}'
 
 # Сообщение о пустом отчете (для разработчика)
-EMPTY_REPORT_MESSAGE_FOR_DEV = 'Предупреждение о штрафе. Выполните задачу: {task_subject}\n{task_link}'
+EMPTY_REPORT_MESSAGE_FOR_DEV = 'Предупреждение о штрафе. Выполните задачу:\n{task_subject}\n{task_link}'
 
 # Сообщение о штрафе за отсутствие плана
-EMPTY_PLAN_FINE_MESSAGE = 'Штраф за отсутствие плана для задачи {task_subject}\n{task_link}\n{current_date}'
+EMPTY_PLAN_FINE_MESSAGE = 'Штраф за отсутствие плана для задачи:\n{task_subject}\n{task_link}\n{current_date}'
 
 # Сообщение о штрафе за отсутвие отчета
-EMPTY_REPORT_FINE_MESSAGE = 'Штраф за отсутствие отчета для задачи {task_subject}\n{task_link}\n{current_date}'
+EMPTY_REPORT_FINE_MESSAGE = 'Штраф за отсутствие отчета для задачи:\n{task_subject}\n{task_link}\n{current_date}'
 
 
 # Options

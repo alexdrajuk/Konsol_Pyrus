@@ -35,6 +35,7 @@ def check_users_reports(empty_report_fine_message=False, notify_manager=True):
                 assignee_chat_id = credentials.get('chat_id')
                 owner_chat_id = dict(lib.find_task_owner_credentials(task)).get('chat_id')
                 report_comment = lib.get_today_report_comment(task)
+                plan_comment = lib.get_today_plan_comment(task)
                 # Отправляем уведомление
                 # Если в задаче не указан отчет (нет ни одного комментария начинающегося строкой "Отчет")
                 if not report_comment:
@@ -65,7 +66,7 @@ def check_users_reports(empty_report_fine_message=False, notify_manager=True):
                                 current_date=datetime.now().strftime('%d.%m.%Y')
                             )
                         )
-                if not lib.is_report_correct(report_comment.get('text', ''), account.fetch_related_tasks(task)):
+                if not lib.is_report_correct(report_comment.get('text', ''), plan_comment.get('text', '')):
                     Messenger.send_message(
                         assignee_chat_id,
                         settings.INCORRECT_REPORT_TASK_MESSAGE_FOR_DEV.format(

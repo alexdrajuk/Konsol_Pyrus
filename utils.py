@@ -77,4 +77,4 @@ def is_task_closed(task):
 
 
 def generate_task_link(task_id):
-    return f'https://pyrus.com/t#{task_id}'
+    return f'https://pyrus.com/t#id{task_id}'
