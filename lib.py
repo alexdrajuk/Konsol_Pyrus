@@ -29,13 +29,17 @@ def get_today_report_comment(task):
             return comment
 
 
-def is_plan_correct(plan, related_tasks):
+def is_plan_correct(plan, related_tasks, include_closed=False):
     '''Проверяет соответствие плана связанным задачам'''
     plan = [subject.lower() for subject in plan.split('\n')]
     # Удаляем слово "План"
     # ['Plan:', 'Пункт плана 1', 'Пункт плана 2'] => ['Пункт плана 1', 'Пункт плана 2']
     plan = plan[1:]
-    related_tasks_subjects = [task.get('subject').lower() for task in related_tasks]
+
+    related_tasks_subjects = [task.get('subject').lower() for task in related_tasks if not task.get('close_date')]
+    if include_closed:
+        related_tasks_subjects = [task.get('subject').lower() for task in related_tasks]
+
     return set(plan) == set(related_tasks_subjects)
 
 
